@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/vue-1.0.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div id="app">
+        <counter heading="Likes" class="btn-success"></counter>
+        <counter heading="Dislikes" class="btn-danger"></counter>
+    </div>
+    <template id="counter-template">
+        <h1>{{ heading }}</h1>
+        <button class="btn {{ class }}" @click="counter += 1">{{ counter }}</button>
+        <div class="pre-scrollable">
+            {{ $data | json }}
+        </div>
+    </template>
+</div>
+
+
+<script>
+
+    Vue.component('counter', {
+        template:'#counter-template',
+        props:['heading', 'class'],
+        data:function(){
+            return { counter:0 };
+        }
+    });
+
+    new Vue({
+        el:'#app'
+    });
+</script>
+</body>
+</html>

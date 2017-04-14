@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/vue-1.0.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div id="app">
+        <div class="alert alert-danger" v-show="!message">您必须输入内容</div>
+        <form>
+            <div class="form-group">
+                <textarea class="form-control" name="" id="" cols="30" rows="10" v-model="message"></textarea>
+            </div>
+            <div>
+                <button class="btn btn-success" v-show="message">提交</button>
+            </div>
+        </form>
+        <div class="pre-scrollable">
+            {{ $data | json }}
+        </div>
+    </div>
+</div>
+
+
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            message:''
+        }
+    });
+</script>
+</body>
+</html>
