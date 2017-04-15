@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/vue-1.0.js"></script>
+</head>
+<style>
+    .computed{
+        text-decoration: line-through;
+    }
+</style>
+<body>
+
+<div class="container">
+    <div id="app">
+        <ul>
+            <li @click="toggleTasks(task)" :class="{'computed':task.computed}" v-for="task in tasks">{{ task.body }}</li>
+        </ul>
+    </div>
+</div>
+
+
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            tasks:[
+                {body : "one", computed:true},
+                {body : "two", computed:false},
+                {body : "three", computed:true}
+            ]
+        },
+        methods:{
+            toggleTasks:function (task) {
+                task.computed = !task.computed;
+            }
+        }
+    });
+</script>
+</body>
+</html>

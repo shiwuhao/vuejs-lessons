@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/vue-1.0.js"></script>
+</head>
+<style>
+    .computed{
+        text-decoration: line-through;
+    }
+</style>
+<body>
+
+<div class="container">
+    <div id="app">
+        <task-app :lists="tasks"></task-app>
+
+        <task-app :lists="tasks2"></task-app>
+
+        <task-app :lists="tasks"></task-app>
+
+        <task-app :lists="tasks"></task-app>
+    </div>
+
+    <template id="task-template">
+        <ul>
+            <li @click="toggleTasks(task)" :class="{'computed':task.computed}" v-for="task in lists">{{ task.body }}</li>
+        </ul>
+    </template>
+</div>
+
+
+<script>
+    Vue.component('task-app', {
+        template:'#task-template',
+        props:['lists'],
+        methods:{
+            toggleTasks:function (task) {
+                task.computed = !task.computed;
+            }
+        }
+    });
+
+    new Vue({
+        el:'#app',
+        data:{
+            tasks:[
+                {body : "one", computed:true},
+                {body : "two", computed:false},
+                {body : "three", computed:true}
+            ],
+            tasks2:[
+                {body : "one", computed:true},
+                {body : "two", computed:false},
+                {body : "three", computed:true}
+            ],
+        },
+
+    });
+</script>
+</body>
+</html>
