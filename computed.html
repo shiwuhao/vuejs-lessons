@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="./js/vue-1.0.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div id="app">
+        Hello {{ level >= 100 ? 'VIP会员' : '普通会员' }}
+    </div>
+</div>
+
+
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            points:200
+        },
+        computed:{
+            level:function () {
+                return this.points > 100 ? 'vip会员' : '普通会员'
+            }
+        }
+    });
+</script>
+</body>
+</html>
